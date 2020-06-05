@@ -134,10 +134,22 @@ The digital version of modulation is called keying
 
 When noise is present, the maximum data rate for error free communication, is $ B\ log_2 (1 + S/N) $
 
+i.e  a SNR of 4.77 dB is required to achieve 10 Mbps through a 5 MHz channel.
+
+$ 10 \times 10^6 = (5 \times 10^6) \times log_2(1 + S/N) $  
+$ 2 = log_2(1 + S/N) $  
+$ 1 + S/N = 2^2 = 4 $  
+$ S/N = 3 $  
+$ 10log(S/N = 3) = 4.77 dB $
+
+
+
 ## Hamming Distance
 
 The number of different bits, when two sequences are compared.  
 Increasing the hamming distance between codewords increases the correction rate.  
+
+Hamming distance of 3 can detect up to 2 bits of errors, but can only correct one bit errors.
 
 # Multiple Access Methods
 
