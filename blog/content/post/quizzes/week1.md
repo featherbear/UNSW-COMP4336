@@ -2,7 +2,7 @@
 title: "Week 1 Quiz"
 date: 2020-06-05T17:15:00+10:00
 
-categories: ["Quiz"]
+categories: ["Quizzes"]
 hiddenFromHomePage: false
 postMetaInFooter: false
 
