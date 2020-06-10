@@ -1,6 +1,6 @@
 ---
 title: "Lab 2"
-date: 2020-06-05T21:30:11+10:00
+date: 2020-06-10T13:00:11+10:00
 
 categories: ["Labs"]
 hiddenFromHomePage: false
@@ -26,7 +26,6 @@ sequenceDiagrams:
 
 # Useful
 
-> Capture: [lab2.pcapng](./lab2.pcapng)  
 > Lab Task: [lab2-task.pdf](./lab2-task.pdf)
 
 To show Antenna Strength - find the `wlan_radio.signal_dbm` field in the header, then right-click and press **Apply as Column**
@@ -34,6 +33,8 @@ To show Antenna Strength - find the `wlan_radio.signal_dbm` field in the header,
 ---
 
 # Task 1
+
+> Capture: [lab2.pcapng](./lab2.pcapng)  
 
 ![](2020-06-05_21-45-03.png)
 
@@ -43,7 +44,7 @@ To show Antenna Strength - find the `wlan_radio.signal_dbm` field in the header,
 |Signal Noise|![](task1-signalnoise.png)|
 |SNR|![](task1-signalnoiseratio.png)|
 
-## Analysis
+**Analysis**
 
 Signal strength decreased when the mobile phone was brought away from the laptop. When the laptop was brought closer, the signal strength increased again.  
 The closer the mobile phone was to the laptop, the stronger the amplitude of radio waves were, hence the stronger the signal strength.
@@ -56,5 +57,22 @@ The signal to noise ratio closely follows the shape of the signal strength graph
 
 # Task 2
 
-<!-- To do next week! -->
+> _Capture was taken over a period of 50 seconds, moving the phone away for 25 seconds, then bringing it closer for the next 25 seconds._  
+> &nbsp;  
+> Capture: [task2_packets.pcapng](./task2_packets.pcapng)  
+> CSV: [task2_packets.csv](./task2_packets.csv)
 
+_Note: I was only able to capture the signal strength, as no signal noise data nor SNR data was captured in Wireshark_
+
+![](2020-06-10_14-06-10.png)
+
+![](task2-signalstrength.png)
+
+**Analysis**
+
+Like what was seen in task 1, increasing the distance between the phone and laptop lowered the signal strength. When bringing the two devices closer together, the signal strength would increase.
+
+There is noticeably much more variance in the signal strength as compared to the graphs in task 1.  
+This is most likely as a result of atmospheric and environmental factors (Brick walls, plasterboard walls, metals, other devices in the house).
+
+As no signal noise was able to be recorded, it is difficult to justify whether signal noise had changed during this investigation. As a result, the SNR is unknown.
