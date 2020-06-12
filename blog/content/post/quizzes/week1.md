@@ -20,7 +20,7 @@ sequenceDiagrams:
 
 **False**
 
-Whilst it uses a narrow bandwidth or transmission, as frequency hopping requires many different frequeny bands to hop to, the bandwidth is actually increased.
+Whilst it uses a narrow bandwidth or transmission, frequency hopping requires many different frequency bands to hop to, the bandwidth is actually increased.
 
 ---
 

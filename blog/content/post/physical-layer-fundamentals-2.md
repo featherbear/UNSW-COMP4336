@@ -15,6 +15,8 @@ sequenceDiagrams:
 
 ---
 
+> Detailed Notes: [detailed_w2_lecture_notes.pdf](./detailed_w2_lecture_notes.pdf)
+
 # Antennas
 
 * Converts electrical energy into EM waves, as well as EM waves to electrical energy
@@ -23,7 +25,7 @@ sequenceDiagrams:
 * Types of Antennas
   * Omni-directional - All directions
   * Directional - Most power in the desired direction
-  * Iotropic - Radiate in all directions equally
+  * Isotropic - Radiate in all directions equally
 * Antenna Gain
   * Power at a particular point / Power with an isotropic antenna
   * Expressed in dBi (Decibel relative to isotropic)
@@ -63,10 +65,8 @@ sequenceDiagrams:
 
 * The higher the frequency, the greater the path loss at a fixed distance
 
-* logarithmic version
-  * 10log_{10} \frac{\lambda}{4 \pi d})^2  ->>>>>>>> 20 log lambda / 4pid
-
-<!-- TODO: -->
+* Logarithmic version
+  * $ 20\ log_{10} (\frac{4 \pi d}{\lambda}) = 20\ log_{10} (\frac{4 \pi d f}{c}) = 20\ log_{10}(d) + 20\ log_{10}(f) - 147.55 $
 
 <!-- * Change by a factor of 10 -> 20 dB -->
 <!-- * Change by a factor of 1000 -> 30 dB -->
@@ -105,6 +105,8 @@ Delay spread = time between the first LOS and last NLOS signal.
 
 ## 2-Ray Path Loss Model
 
+* Model is independent of frequency
+
 $ P_R = P_T G_T G_R (\frac{h_T h_R}{d^2})^2 $
 
 $ 40 log_{10}(d) - 20 log_{10}(h_T h_R) $ (Unit gain antenna)
@@ -132,23 +134,21 @@ Phase change occurs due receiving signals at different times (due to multipath).
 * Allows for multiple paths which won't interfere - space antennas $ > \lambda / 2 $
   * Improve signal quality and data rate
 
-* Beamforming - virtual directional antennas - increase coverage and signal strength in a particular direction
+* Beamforming - 
 
-* TODO: SCREENSHOT - allows single antenna devices to still use
+Single antenna devices can still benefit from MIMO units  
 
+![](2020-06-12_12-46-03.png)
 
-* Spatial Diversity
-* Spatial Multiplexity
-* Beamforming
-
-TODO:
+* Spatial Diversity - Improve reliability
+* Spatial Multiplexity - Improve data rate
+* Beamforming - Increase coverage and signal strength in a particular direction
 
 ## Spatial Diversity
 
-Send the same data over all of the paths (**redundancy**). The strongest signal will be processed
+Send the same data over all of the paths (**redundancy**). The strongest signal will be processed.
 
 Number of paths = number of transmit antennas $ \times $ number of receive antennas  
-
 
 ## Spatial Multiplexing
 
@@ -160,8 +160,7 @@ Degrees of freedom = $ min(N_T, N_R) $
 ## Beam Forming
 
 Phase shift some of the signals so that they constructively interfere, and increase the SNR and range!  
-
-
+Virtual directional antennas.
 
 # Orthogonal Frequency Division Multiplexing - OFDM
 
@@ -181,11 +180,12 @@ Phase shift some of the signals so that they constructively interfere, and incre
 
 # Orthogonal Frequency Division Multiple Access - OFDMA
 
-TODO: SCREENSHOT
+![](2020-06-12_12-48-37.png)
 
-Each user uses a subset of subcarriers for a few time slots.
+2D Scheduling
 
-2D SChedlung
+Each user uses a subset of subcarriers for a few time slots  
+Users are given different frequencies at different times
 
 ---
 
