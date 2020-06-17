@@ -160,14 +160,14 @@ Hamming distance of 3 can detect up to 2 bits of errors, but can only correct on
   * Clients are allocated to different frequency groups
   * Using FFT, etc... we can extract data from certain frequencies
 * CDMA - Code Division Multiple Access
-  * FHSS - Frequency Hopping Spread Spectrum
+* (CDMA) FHSS - Frequency Hopping Spread Spectrum
     * Frequently change to different frequencies
     * Transmitter and Receiver share a pseudo-random seed (code) which produces the next frequency to hop to.
     * Hard to intercept
     * Requires more bandwidth
     * Requires time and frequency synchronisation
-  * DSSS - Direct Sequence Spread Spectrum
-    * Data XOR code
+* (CDMA) DSSS - Direct Sequence Spread Spectrum
+  * Data XOR code
 
 # Doppler Shift
 
