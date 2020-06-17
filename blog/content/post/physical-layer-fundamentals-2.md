@@ -115,7 +115,7 @@ $ 40 log_{10}(d) - 20 log_{10}(h_T h_R) $ (Unit gain antenna)
 
 ## Path Loss Exponent
 
-Regardless of the model, the path loss is modelled by $ PL(dB) = 10 log_{10}(d^n) + C = 10 \times n \times log_{10}(d) + C $
+Regardless of the model, the path loss is modelled by $ PL(dB) = 10 log_{10} (d^n) + C = 10 \times n \times log_{10} (d) + C $
 
 ## Small Scale Fading
 
@@ -133,8 +133,6 @@ Phase change occurs due receiving signals at different times (due to multipath).
 
 * Allows for multiple paths which won't interfere - space antennas $ > \lambda / 2 $
   * Improve signal quality and data rate
-
-* Beamforming - 
 
 Single antenna devices can still benefit from MIMO units  
 
