@@ -1,7 +1,8 @@
 ---
-title: "Wifi 2"
+title: "WiFi 2"
 date: 2020-06-24T09:30:42+10:00
 
+description: "802.11 technologies"
 hiddenFromHomePage: false
 postMetaInFooter: false
 
@@ -29,6 +30,7 @@ Have to consider the SNR.
 * 10 chips/symbol
 
 # 802.11-1997
+
 * 1/2 rate binary convolution encoding
 * 2 bits/symbol
 * 11 chips/symbol
@@ -37,8 +39,8 @@ Have to consider the SNR.
 `Data Rate = Encoding rate * Frequency * Data rate / chip rate`  
 DQPSK = 1/2 * 22 MHz / 11 chips per symbol * 2 data bits per symbol = 2 megabits per second
 
+## 802.11b-1999
 
-## 802.11b-1999 -
 1/2 rate binary convolution encoder at 8 bits/symbol, 8 chips/symbol  
 Complementary Code Keying (CCK)
 
@@ -51,7 +53,6 @@ CCK = 1/2 * 22 * 8/8 = 11 Mbps
 8 chips to code a symbol  
 16 QAM  
 22 MHz  
-
 
 It will take 2 Hz to produce one chip.
 
@@ -115,7 +116,7 @@ Data bits per symbol = coding rate * log_2 M * number of data subcarriers
 * Supports 1/2, 2/3, 3/4 coding rate
 * Supports 8 (as opposed to 4x3=12) different data rates, 6 Mbps up to 54 Mbps - depending on the **modulation and coding scheme (MCS)**
 
-TODO: Data rate table
+![](2020-06-26_01-30-16.png)
 
 ---
 
@@ -147,9 +148,16 @@ If agreed, a guard interval of 400ns can be used.
 
 ---
 
-TODO: Data rate improvement screenshot
-TODO: Data rate improvement screenshot 2
-TODO: Data rate table
+![](2020-06-26_01-32-42.png)  
+![](2020-06-26_01-32-48.png)
+
+* Single Stream Data Rate - https://www.cablefree.net/wirelesstechnology/wireless-lan/data-rates-in-802-11n
+
+![](2020-06-26_01-32-00.png)
+
+* Multi Stream Data Rate - https://www.cablefree.net/wirelesstechnology/wireless-lan/data-rates-in-802-11n
+
+![](2020-06-26_01-32-08.png)
 
 ## Frame aggregation
 
@@ -173,11 +181,15 @@ Receivers can derive the CSI from the pilots, but the transmitter cannot derive 
 * Up to 256QAM
 * Up to 8 MIMO streams
 
+![](2020-06-26_01-35-03.png)
 
-TODO: Data rate improvement screenshot
-TODO: Data rate improvement screenshot 2
-TODO: Data rate table
+![](2020-06-26_01-35-11.png)
 
+![](2020-06-26_01-36-26.png)
+
+* Data Rate - https://www.cablefree.net/wirelesstechnology/wireless-lan/data-rates-802-11ac/
+
+![](2020-06-26_01-35-21.png)
 
 ## Multi-User MIMO
 
@@ -214,6 +226,12 @@ Previous evolutions focused on increasing the speed - however it is hard to atta
   * 80 MHz - 1024 subcarriers, 980 data subcarriers
   * 160 MHz - 2014 subcarriers, 1960 data subcarriers
 
+![](2020-06-26_01-38-14.png)
+
+![](2020-06-26_01-37-10.png)
+
+![](2020-06-26_01-37-02.png)
+
 ## OFDMA - Orthogonal Frequency Division Multiple Access
 
 * 2D frequency and time allocation
@@ -226,4 +244,10 @@ Previous evolutions focused on increasing the speed - however it is hard to atta
   * Largest resource allocation / tone - 996 * 78.125 kHz = 77812.5 kHz ~= 80 MHz
 * A station can have a maximum of two 996 tones
 
-TODO: RU table
+![](2020-06-26_01-38-29.png)
+
+![](2020-06-26_01-38-40.png)
+
+![](2020-06-26_01-37-56.png)
+
+![](2020-06-26_01-37-42.png)
