@@ -1,6 +1,6 @@
 ---
 title: "Week 3 Quiz"
-date: 2020-06-26T01:20:53+10:00
+date: 2020-06-19T01:20:53+10:00
 
 categories: ["Quizzes"]
 

@@ -48,8 +48,6 @@ c. 128-QAM
 d. 32-QAM  
 **e. 256-QAM**
 
-_I wrote 32-QAM???_
-
 ---
 
 > An access point with 8 antennas can theoretically transmit 8 times more information to a single antenna device
