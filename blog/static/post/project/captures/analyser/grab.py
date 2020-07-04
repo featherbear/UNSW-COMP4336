@@ -7,13 +7,14 @@ import glob, os
 data = dict()
 
 print("Reading data")
-os.chdir("../indoor")
+os.chdir("../outdoor")
 fileSuffix = ".pcapng.csv"
 
 # Read csv files
 for file in glob.glob("*" + fileSuffix):
     point = int(file.replace(fileSuffix, ""))
     data[point] = pd.read_csv(file)
+    print(point, data[point]["wlan_radio.signal_dbm"].count() )
 
 # Order the data
 data = [(i, data[i]) for i in sorted(data.keys())]
