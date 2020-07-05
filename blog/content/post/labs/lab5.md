@@ -110,7 +110,44 @@ _A sofa, door, human body and cooking pot (cumulatively added) was used to captu
   * However the MCS Index did not return to an MCS of 15, but topped out at 12.
 
 As more obstacles were added, the signal strength decreased; which had lowered the MCS Index and subsequently the Data Rate.  
-The human body did not make a large contribution to the loss of signal strength.  
+The human body did not make a large contribution to the loss of signal strength. The cooking pot however, did seem to cause a larger signal strength (and MCS Index) change. Even when brought nearer to the laptop, whilst the signal strength increased; the MCS Index did not return to its original value.
 
-The cooking pot however, did seem to cause a larger signal strength (and MCS Index) change.  
-Even when brought nearer to the laptop, whilst the signal strength increased; the MCS Index did not return to its original value.
+## Task 3 - Channel variation due to interference
+
+> Interference from other wireless transmissions affects signal-to-noise-and-interference-ratio (SNIR). As such, WiFi chipsets are expected to switch to simpler MCS when there is severe interference, and vice versa.
+
+Start WiFi data transmissions between a phone and a laptop and keep capturing WiFi packets in Wireshark during this time. Also, turn on a smart TV and watch a video from the Internet. Now turn on a microwave oven nearby, which uses 2.4GHz (all microwave ovens do). You may find that the video stall in your smart TV due to severe interference in the WiFi network arising from the high-power use of 2.4GHz in the microwave. The microwave should also affect the WiFi transmission between the phone and the laptop. Analyse RSS, MCS as well as the data rates from the Wireshark traces and try to explain how the microwave operation affects MCS/data-rate.
+
+* [Wireshark Capture](task3/task3.pcapng)
+* [CSV](task3/task3.csv)
+
+A tablet, phone and laptop were all loaded with the same video stream to be played concurrently for roughly three minutes; whilst a microwave was turned on.
+
+`tshark -r "task3.pcapng" -T fields -e frame.number -e frame.time -e wlan_radio.signal_dbm -e wlan_radio.11n.mcs_index -e wlan_radio.data_rate -e wlan_radio.noise_dbm -e wlan_radio.snr -E header=y -E separator=, -E quote=d -E occurrence=f > task3.csv`
+
+### Analysis
+
+![](task3/packet_frequency_histogram.png)
+
+The frequency histogram has been split into 10 bins, each class accounting for 18 seconds of the capture.  
+
+* At the 90 second mark, there were considerably many more packets recorded (about 10x more).  
+* At the 144 second mark, there were 3x even more packets.
+
+|Graphs|
+|:----:|
+|![](task3/wlan_radio.11n.mcs_index.png)|
+|![](task3/wlan_radio.data_rate.png)|
+|![](task3/wlan_radio.signal_dbm.png)|
+|![](task3/wlan_radio.noise_dbm.png)|
+|![](task3/wlan_radio.snr.png)|
+
+It is somewhat difficult to detect the impact of the microwave, as the MCS Index, Data Rate and RSS were constantly fluctuating. Throughout the 3 minute capture period; the MCS Index constantly fluctuated from 15 to 13.  
+As expected, a change in data rate followed, changing from 144.44 Mbps to 115.56 Mbps.
+
+At times, the MCS Index would drop to 12, and the Data Rate would decrease to 68.67 Mbps - suggestive that high RF activity had cause interference, which made active data connections stall.
+
+This can be seen most clearly at around 150 seconds; when the noise floor increased from -88 dBm to -84 dBm and stayed consistently at -84 dBm. When analysing the change in MCS Index and Data Rate, there were many more occasions where the MCS Index and Data Rate had dropped to MCS 12 - 86.67 Mbps. Consequently, the SNR decreased.  
+This is indicative of continuous RF interference from a source like a microwave.  
+
+We can infer from this observation that microwave usage causes RF interference - which makes the MCS Index and Data Rates of connections fluctuate consistently. It also causes devices to stall/drop out.
