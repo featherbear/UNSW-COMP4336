@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+# z5206677
+
 import pandas as pd
 import numpy as np
 import glob, os
@@ -7,7 +9,7 @@ import glob, os
 data = dict()
 
 print("Reading data")
-os.chdir("../outdoor")
+os.chdir("../outdoor") # outdoor / indoor
 fileSuffix = ".pcapng.csv"
 
 # Read csv files
