@@ -17,13 +17,14 @@ sequenceDiagrams:
 
 # Distance Estimation using Wireless Signal Strength
 
-This project aims to investigate the relationship between distance and wireless signal strength; in hopes to accurately estimate the distance between objects given a wireless signal strength reading.
+> This project aims to investigate the relationship between distance and wireless signal strength; in hopes to accurately estimate the distance between objects given a wireless signal strength reading.
 
 ## Data Collection
 
 ### Procedure
 
-11 markers were placed in a straight unobstructed line, each 1 meter apart from the next marker. An access point (mobile phone) was placed at one end of the line. For each marker (including the marker where the phone was positioned), a laptop was positioned - such that its USB WiFi adapter was in direct line of sight with the access point. Beacon frames were captured at each marker for one minute (60 seconds).
+11 markers were placed in a straight unobstructed line - each 1 meter apart from the next marker.  
+An access point (mobile phone) was placed at one end of the line. At each marker, a laptop was positioned - such that its USB WiFi adapter was in direct line of sight with the access point. Beacon frames were captured at each marker for one minute (60 seconds).
 
 This capturing procedure was completed twice - once in an indoor environment and once in an outdoor environment.
 
@@ -32,12 +33,12 @@ This capturing procedure was completed twice - once in an indoor environment and
 |Indoor Environment|Outdoor Environment|
 |:---:|:---:|
 |![](part1/indoor/signal_linear_all.png)|![](part1/outdoor/signal_linear_all.png)|
+|**Linear Average**|**Linear Average**|
+|![](part1/indoor/signal_linear_average.png)|![](part1/outdoor/signal_linear_average.png)|
+|**Logarithmic Average**|**Logarithmic Average**|
+|![](part1/indoor/signal_log_average.png)|![](part1/outdoor/signal_log_average.png)|
 
-#### Indoor Environment
-
-|Linear Average|Logarithmic Average|
-|:---:|:---:|
-|![](part1/indoor/signal_linear_average.png)|![](part1/indoor/signal_log_average.png)|
+#### Indoor Environment Averages
 
 |Distance (m)|Average RSS (dBm)|# Data Points|
 |:----------:|:---------------:|:-----------:|
@@ -53,11 +54,7 @@ This capturing procedure was completed twice - once in an indoor environment and
 |9|-71.35|496|
 |10|-62.64|548|
 
-#### Outdoor Environment
-
-|Linear Average|Logarithmic Average|
-|:---:|:---:|
-|![](part1/outdoor/signal_linear_average.png)|![](part1/outdoor/signal_log_average.png)|
+#### Outdoor Environment Averages
 
 |Distance (m)|Average RSS (dBm)|# Data Points|
 |:----------:|:---------------:|:-----------:|
@@ -103,6 +100,10 @@ This linear regression fitted distance (X) to estimated RSS (Y). The formula for
 ### Accuracy
 
 > Hit-rate has been defined as the percentage of data points in a distance class, whose distance estimation matches the recorded distance.
+
+|Indoor|Outdoor|
+|:---:|:---:|
+|![](part1/indoor/script_output.png)|![](part1/outdoor/script_output.png)|
 
 As shown by the hit-rates on both graphs, it is evident that the distance estimation formula is sub-optimal, and is not accurate over a wide range of RSS values. For both indoor and outdoor environments, the normalised mean square error was quite low.
 
