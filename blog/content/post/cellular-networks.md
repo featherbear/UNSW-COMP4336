@@ -144,7 +144,7 @@ The guard channel count is not standardised, and left up to the telco operator t
 * Frequency range: 949-900 MHz -> 49 MHz
 * 49 MHz / cluster size = 49 / 7 = 7 MHz per cell
 * 7 MHz / 2 = 3.5 MHz uplink, 3.5 MHz downlink
-* Supports 3.5 MHz * 1 bps/Hz = 3.5 Mbs
+* Supports 3.5 MHz * 1 bps/Hz = 3.5 Mbps
   * 3.5 Mbps / 10 kbps = 350 concurrent users
 * Cell Area
   * 350 users / 100 users/km^2 = 3.5 km^2 cells
