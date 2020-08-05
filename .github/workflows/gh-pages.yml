@@ -14,7 +14,7 @@ jobs:
     - name: Setup Hugo
       uses: peaceiris/actions-hugo@v2.0.0
       with:
-        hugo-version: '0.58.2'
+        hugo-version: '0.68.3'
 
     - name: Clone theme
       run: cd blog/themes && git clone https://github.com/olOwOlo/hugo-theme-even && cd hugo-theme-even && git reset --hard d39d3e443953caea05510b19fdd7a259c71a0ab3
