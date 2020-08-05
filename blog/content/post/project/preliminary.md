@@ -1,10 +1,12 @@
 ---
-title: "Project"
+title: "Project - Preliminary Report"
 date: 2020-06-17T09:26:54+10:00
 
+description: "Naive distance estimator given Wireless Signal Strength"
 hiddenFromHomePage: false
 postMetaInFooter: false
 
+categories: ["Project"]
 flowchartDiagrams:
   enable: false
   options: ""
@@ -14,6 +16,8 @@ sequenceDiagrams:
   options: ""
 
 ---
+
+> [Project Files](https://github.com/featherbear/UNSW-COMP4336/tree/master/blog/static/post/project)
 
 # Distance Estimation using Wireless Signal Strength
 
@@ -32,11 +36,11 @@ This capturing procedure was completed twice - once in an indoor environment and
 
 |Indoor Environment|Outdoor Environment|
 |:---:|:---:|
-|![](part1/indoor/signal_linear_all.png)|![](part1/outdoor/signal_linear_all.png)|
+|![](indoor/signal_linear_all.png)|![](outdoor/signal_linear_all.png)|
 |**Linear Average**|**Linear Average**|
-|![](part1/indoor/signal_linear_average.png)|![](part1/outdoor/signal_linear_average.png)|
+|![](indoor/signal_linear_average.png)|![](outdoor/signal_linear_average.png)|
 |**Logarithmic Average**|**Logarithmic Average**|
-|![](part1/indoor/signal_log_average.png)|![](part1/outdoor/signal_log_average.png)|
+|![](indoor/signal_log_average.png)|![](outdoor/signal_log_average.png)|
 
 #### Indoor Environment Averages
 
@@ -76,12 +80,12 @@ This capturing procedure was completed twice - once in an indoor environment and
 
 **Indoor**
 
-|![](part1/indoor/graph_mini.png)|![](part1/indoor/script_output.png)|
+|![](indoor/graph_mini.png)|![](indoor/script_output.png)|
 |:---:|:---:|
 
 **Outdoor**  
 
-|![](part1/outdoor/graph_mini.png)|![](part1/outdoor/script_output.png)|
+|![](outdoor/graph_mini.png)|![](outdoor/script_output.png)|
 |:---:|:---:|
 
 > **Legend**
@@ -103,7 +107,7 @@ This linear regression fitted distance (X) to estimated RSS (Y). The formula for
 
 |Indoor|Outdoor|
 |:---:|:---:|
-|![](part1/indoor/script_output.png)|![](part1/outdoor/script_output.png)|
+|![](indoor/script_output.png)|![](outdoor/script_output.png)|
 
 As shown by the hit-rates on both graphs, it is evident that the distance estimation formula is sub-optimal, and is not accurate over a wide range of RSS values. For both indoor and outdoor environments, the normalised mean square error was quite low.
 
