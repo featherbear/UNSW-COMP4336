@@ -23,6 +23,7 @@ data = [(i, data[i]) for i in sorted(data.keys())]
 
 # Combine the data
 combined = pd.concat([pd.DataFrame(dict(RSS=v["wlan_radio.signal_dbm"],Distance=[i]*v["wlan_radio.signal_dbm"].count())) for (i,v) in data], ignore_index=True)
+print(combined["RSS"].count())
 
 # Extract 10% of the data to be used as test data.
 # The other 90% is to be used as training data.
@@ -42,7 +43,7 @@ import matplotlib.pyplot as plt
 
 from sklearn.linear_model import LinearRegression
 X = combined.iloc[:, 1].values.reshape(-1, 1)
-Y = combined.iloc[:, 0].values.reshape(-1, 1)
+Y = combined.iloc[:, 0].values.reshape(-1, 1) 
 
 XYmodel = LinearRegression()  # create object for the class
 XYmodel.fit(X, Y)  # perform linear regression
@@ -91,13 +92,19 @@ plt.scatter(X,Y) # Actual values
 plot_average()
 
 print()
+total = 0
+hit = 0
 for data in analysis:
-  # plot_YX_regression(data["testSample"].values.reshape(-1, 1))
   correctDistance = data["index"]
   samples = testSample.loc[testSample["Distance"] == correctDistance]["RSS"]
   x_values = plot_YX_manual(samples)
-  count = sum(map(lambda v: (correctDistance-0.5 <= v <= correctDistance+0.5) and 1 or 0, x_values))
+  count = sum(map(lambda v: (correctDistance-1 <= v <= correctDistance+1) and 1 or 0, x_values))
+  
+  hit += count
+  total += len(x_values)
   print(f"Hit-rate for {correctDistance}m :: {count}/{len(x_values)} :: {round(count/len(x_values)*100,2)}%")
+
+print(f"\nTotal hit-rate :: {hit}/{total} :: {round(hit/total*100,2)}%")
 
 #plt.xscale('log')
 plt.xlabel("Distance (m)")
