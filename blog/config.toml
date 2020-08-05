@@ -39,6 +39,11 @@ copyright = "Andrew Wong (z5206677)"
   identifier = "code"
   url = "https://github.com/featherbear/UNSW-COMP4336"
 [[menu.main]]
+  name = "Project"
+  weight = 30
+  identifier = "Project"
+  url = "/categories/project/"
+[[menu.main]]
   name = "Categories"
   weight = 40
   identifier = "categories"
