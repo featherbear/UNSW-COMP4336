@@ -15,6 +15,8 @@ sequenceDiagrams:
   enable: false
   options: ""
 
+outputs: ["Report"]
+
 ---
 
 > _This report continues the experimentation and formulation of a wireless signal strength to distance algorithm as conceived [here](../preliminary)_
@@ -159,11 +161,14 @@ A Kalman Filter will be applied to clean the data, which will then be evaluated 
 
 ## Results
 
-![](../preliminary/outdoor/signal_linear_all.png)
+![Figure 1](../preliminary/outdoor/signal_linear_all.png)
 
 |Linear Average|Logarithmic Average|
 |:---:|:---:|
-|![](../preliminary/outdoor/signal_linear_average.png)|![](preliminary_correction/corrected_signal_log_average_outdoor.png)|
+|![Figure 2.1](../preliminary/outdoor/signal_linear_average.png)|![Figure 2.2](preliminary_correction/corrected_signal_log_average_outdoor.png)|
+
+
+Table 1
 
 |Distance (m)|Average RSS (dBm)|Min RSS (dBm)|Max RSS (dBm)|RSS Range (dBm)|# Data Points|
 |:----------:|:---------------:|:-----------:|:-----------:|:-----------:|:-----------:|
@@ -181,27 +186,30 @@ A Kalman Filter will be applied to clean the data, which will then be evaluated 
 
 ## Analysis
 
-As a result of environmental factors, the recorded values have been affected by induced atmospheric noise, and interference from other electrical signals. These fluctuations are evident through the range of different RSS values in each distance class.
+As a result of environmental factors, the recorded values have been affected by induced atmospheric noise, and interference from other electrical signals. These fluctuations are evident through the range of different RSS values in each distance class (See _[Table 1]_).
 
 ### Kalman Filter
 
 To account for RSS fluctuations, a $Kalman\ filter$ can be applied on each distance set.  
 The application of the Kalman filter produces a series of points which have a lower range and variance.  
 
-|Distance (m)|Graph|
-|:------:|:---:|
-|0|![](kalman_filter/0.png)|
-|1|![](kalman_filter/1.png)|
-|2|![](kalman_filter/2.png)|
-|3|![](kalman_filter/3.png)|
-|4|![](kalman_filter/4.png)|
-|5|![](kalman_filter/5.png)|
-|6|![](kalman_filter/6.png)|
-|7|![](kalman_filter/7.png)|
-|8|![](kalman_filter/8.png)|
-|9|![](kalman_filter/9.png)|
-|10|![](kalman_filter/10.png)|
+Figures 3.1 to 3.11 display the decreased RSS variance as a result of the Kalman filter process.
 
+|Graph|
+|:---:|
+|![Figure 3.1](kalman_filter/0.png)|
+|![Figure 3.2](kalman_filter/1.png)|
+|![Figure 3.3](kalman_filter/2.png)|
+|![Figure 3.4](kalman_filter/3.png)|
+|![Figure 3.5](kalman_filter/4.png)|
+|![Figure 3.6](kalman_filter/5.png)|
+|![Figure 3.7](kalman_filter/6.png)|
+|![Figure 3.8](kalman_filter/7.png)|
+|![Figure 3.9](kalman_filter/8.png)|
+|![Figure 3.10](kalman_filter/9.png)|
+|![Figure 3.11](kalman_filter/10.png)|
+
+Table 2
 
 |Distance (m)|RSS Range - no filter (dBm)|RSS Range - Kalman filter (dBm)|
 |:---:|:---:|:---:|
@@ -217,17 +225,15 @@ The application of the Kalman filter produces a series of points which have a lo
 |9|22|16.98|
 |10|18|14.51|
 
+### Set Removal
+
 |Linear Average|Logarithmic Average|
 |:---:|:---:|
-|![](kalman_filter/average_vs_kalman_linear.png)|![](kalman_filter/average_vs_kalman_logarithmic.png)|
-
-### Set Removal
+|![Figure 4.1](kalman_filter/average_vs_kalman_linear.png)|![Figure 4.2](kalman_filter/average_vs_kalman_logarithmic.png)|
 
 Considering a WiFi network broadcasted by a single access point, the series of recorded signal strengths and their averages should follow a strictly decreasing trend. This is due to the principle that electromagnetic waves experience exponential decay, proportional to the distance travelled.  
 
-However, the set of recorded RSS values at distance 3 meters have an abnormally high average value, and should be removed as an outlier group.  
-
-![](kalman_filter/average_vs_kalman_linear.png)
+However, as seen in _[Figure 4.1]_ and _[Figure 4.2]_ the set of recorded RSS values at distance 3 meters have an abnormally high average value, and should be removed as an outlier group.  
 
 Testament to the fact that the variation in RSS values is very low (The data set had an RSS range of 8 dBm), it is likely that this outcome had occurred due to spatial environmental factors. Upon examination of the testing location, the location marked three meters away from the access point was beside an open area of space. Consequently, the effects of multipath transmission would have been lowered, hence resulting in all recorded values (of that distance group) having a significantly higher signal strength.
 
@@ -235,19 +241,17 @@ _This observation may also be loosely applied to the set of RSS values recorded 
 
 ---
 
-On removing the outlier group at distance 3 meters, the series of RSS values better follow a logarithmic decrease
 
 |Linear Average|Logarithmic Average|
 |:---:|:---:|
-|![](set_removal/average_vs_kalman_no3_linear.png)|![](set_removal/average_vs_kalman_no3_logarithmic.png)|
+|![Figure 5.1](set_removal/average_vs_kalman_no3_linear.png)|![Figure 5.2](set_removal/average_vs_kalman_no3_logarithmic.png)|
 
----
-
-Taking the set of Kalman filter values without the 3m data class, we are left with a cleaner set of data which we can perform analysis on.
+Removing the outlier group at distance 3m, the series of RSS values better follow a logarithmic decline.  
+The Kalman filter result set now has a cleaner series of data which we can perform analysis on.
 
 |Linear Average|Logarithmic Average|
 |:---:|:---:|
-|![](set_removal/kalman_no3_linear.png)|![](set_removal/kalman_no3_logarithmic.png)|
+|![Figure 6.1](set_removal/kalman_no3_linear.png)|![Figure 6.2](set_removal/kalman_no3_logarithmic.png)|
 
 ### Data Fitting
 
@@ -276,7 +280,7 @@ This expression ( $y(x) = e^x$ ) suits the trend of the data, when the axes are 
 
 |Linear Scale|Logarithmic Scale|
 |:---:|:---:|
-|![](dist_linear.png)|![](dist_logarithmic.png)|
+|![Figure 7.1](dist_linear.png)|![Figure 7.2](dist_logarithmic.png)|
 
 To determine $\chi$ and $n$, the `curve_fit` function of the `scipy` library was used on the sample data.  
 The reference distance $d_0$ was set to $1\ m$, resulting in $PL_{d_0} = -40\ dB$.  
@@ -286,20 +290,22 @@ The curve fitting function produced the values $\chi = 0.37$ and $n = 1.15$.
 
 |Linear Scale|Logarithmic Scale|
 |:---:|:---:|
-|![](fit_linear.png)|![](fit_logarithmic.png)|
+|![Figure 8.1](fit_linear.png)|![Figure 8.2](fit_logarithmic.png)|
 
-This distance approximation model had a strong coefficient of determination $R^2 = 0.88$, which is an improvement over the score of $R^2 = 0.62$ for the naive preliminary algorithm.
+_[Figure 8.1]_ and _[Figure 8.2]_ superimpose the derived distance approximation model on the training sample set, revealing a strong coefficient of determination $R^2 = 0.88$. This is an improvement over the score of $R^2 = 0.62$ for the naive preliminary algorithm.
 
 ## Testing
 
 > Distance approximation formula: $\large d = e^{\frac{-40.0 + RSS + 0.37}{10 \times 1.15}}$
 
-![](fit_test.png)
+![Figure 9](fit_test.png)
 
 When applying the distance approximation on the test samples, an overall hit-rate of 72.28% was obtained.  
 519 of the 718 samples approximated the correct distance within a 1 meter tolerance.
 
 This algorithm has a noticeably higher performance compared to the naive algorithm, as all test sample classes had at least one distance match.
+
+Table 3
 
 ||Naive Method|Log Distance Method|
 |:---|---:|---:|
