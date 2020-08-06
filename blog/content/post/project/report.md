@@ -41,11 +41,18 @@ Effects of multipath transmission (i.e. radio waves reflecting off walls) and in
 
 ## Abstract
 
-TODO:
+A Log-Distance Model is derived from samples of wireless signal strengths recorded in an outdoor environment. Sample data is cleaned with a Kalman Filter and outlier data group removal, which improved the accuracy of the model.
+
+In comparison to the [naive distance estimation](../preliminary) presented in the [preliminary report](../preliminary), the new model demonstrates a higher hit-accuracy against all distance classes from the test sample. Whilst RSSI values are not a great metric for distance estimation, they can be used within reasonable accuracy.
 
 ## Introduction
 
-TODO:
+The evolution of technology has paved way for the ever increasing need of wireless communication.  
+From the early origins of mobile phone calls, to GPS, to Remotely Operated Machinery, to IoT - wireless technologies have been crucial in the modern age.
+
+Geospatial coordination systems have become crucial for many wireless applications, where it is often useful to locate an object in an area. These include, but are not limited to: asset tracking, navigation systems, and heat mapping.  
+
+However, implementation of a such system can be challenging, due to the large variety of environmental factors and infrastructural costs that may be required. This report aims to find a _universal_ and _portable_ method of determining distances between two devices.
 
 ## Related Works
 
@@ -100,11 +107,11 @@ $$ MWL = PL_0 + 10 n log(d) + \sum_{i} L_{W_i} $$
 
 The multiwall model factors in specific losses for each medium that a ray travels through.
 
-**Log Normal Shadowing Model**
+**Log-Distance / Log Normal Shadowing Model**
 
 $$ PL = PL_0 + 10 n log(d/d0) + \chi $$
 
-The log normal shadowing model extends the free space model, opening scope to paths that are obstructed between the transmitter and receiver.
+This model extends the free space model, opening scope to paths that are obstructed between the transmitter and receiver.
 
 **Egli's Model**
 
@@ -143,14 +150,12 @@ An _Extended Kalman Filter_ algorithm also exists for non-linear signals, where 
 
 A moving average filter is a low pass finite impulse response filter that splits samples into smaller groups, and takes the average of each group. Compared to taking the average of the entire sample space, a moving average filter produces a series of points that can infer trends.
 
----
-
-This experiment aims to find a _universal_ and _portable_ method of determining distances between two devices
-
 ## Method
 
 The previously captured outdoor measurements will be used again for analysis.  
 No new measurements were recorded due to a technical inability to capture wireless packets.
+
+A Kalman Filter will be applied to clean the data, which will then be evaluated on the Log-Distance Model.
 
 ## Results
 
@@ -244,9 +249,9 @@ Taking the set of Kalman filter values without the 3m data class, we are left wi
 |:---:|:---:|
 |![](set_removal/kalman_no3_linear.png)|![](set_removal/kalman_no3_logarithmic.png)|
 
-### Fitting
+### Data Fitting
 
-The **log distance path loss model** describes the power loss (in decibels) of a signal as a result of distance separation.   It is defined as the following
+The **log distance path loss model** describes the power loss (in decibels) of a signal as a result of distance separation. It is defined as the following
 
 $$ PL(d) = PL({d_0}) + 10 \times n \times log_{10}(\frac{d}{d_0}) + \chi $$
 $$ for\ d_0 \le d $$
@@ -314,7 +319,16 @@ This algorithm has a noticeably higher performance compared to the naive algorit
 
 ## Conclusion
 
-TODO:
+This experiment aimed to find a universal and portable method of determining distances between two devices.  
+The extrapolated model follows the algorithm: $\large d = e^{\frac{-40.0 + RSS + 0.37}{10 \times 1.15}}$
+
+Whilst not a universal solution to all wireless environments, it is portable and easily recalculable.  
+RSSI values are not the most optimal measurement of distance, due to their influence from many environment factors.  
+However, results drawn from this experiment conclude that it is definitely possible to use RSSI values to produce an estimated distance - within reasonable accuracy.
+
+As wireless devices do not receive just one, but hundreds and thousands of packets, further distance accuracy can be gained by continually applying a Kalman filter on all of the incoming RSS values.
+
+As seen from analysis, the Log-Distance Path Model better represents the signal strength response to distance separation when compared to the naive distance estimation approach - which modelled a linear equation. The incorporation of a Kalman filter reduced the variance of recorded RSS values in each distance class, which further improved the performance and accuracy of the model.  
 
 ## References
 
