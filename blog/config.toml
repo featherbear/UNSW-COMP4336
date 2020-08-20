@@ -98,7 +98,7 @@ isHTML = true
 
   # Link custom CSS and JS assets
   #   (relative to /static/css and /static/js respectively)
-  customCSS = ['typedjs.shortcode.css']
+  customCSS = ['typedjs.shortcode.css', 'fixDetails.css']
   customJS = ['typed.js@2.0.9', 'typedjs.shortcode.js']
 
   [params.publicCDN]        # load these files from public cdn                          # 启用公共CDN，需自行定义
@@ -140,3 +140,5 @@ isHTML = true
     endLevel = 2
   [markup.goldmark.renderer]
     unsafe = true
+  [markup.goldmark.extensions]
+    typographer = false

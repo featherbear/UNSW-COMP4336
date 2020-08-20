@@ -1,0 +1,6 @@
+details {
+    display: initial;
+}
+details > summary {
+    display: list-item;
+}
