@@ -155,7 +155,7 @@ Unique 48-bit address contained in the access code
   * Slaves use odd slots
 * Packets can be 1 slot, 3 slots or 5 slots long
   * Odd numbering allows the master/slave to be the next
-* Frequency hopping is performed at slot boundaries, and never skipped during a packet
+* Frequency hopping is performed at slot boundaries, and never hopped during a packet
 * Minimum frequency hop rate (when all packets are 5 slots long) - 320 Hz
 * Maximum frequency hop rate (when all packets are 1 slot long) - 1600 Hz
 

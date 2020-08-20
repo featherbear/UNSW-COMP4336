@@ -98,16 +98,23 @@ The _Network Allocation Vector_ stores the duration for which a device should wa
 This can be achieved by using different IFS times.  
 _(high priority packets will be the first to try to request the RTS packet, lower priority packets will see this and stay away from transmitting)_
 
-SIFS - High priority (i.e. ACKs) - Short IFS - Shortest wait duration
-PIFS - Medium priority - **P**oint-**C**oordination-**F**unction IFS - Medium wait duration
-DIFS - Asynchronous - **D**istributed-**C**oordination-**F**unction IFS - Longest wait duration
+SIFS - High priority (i.e. ACKs) - Short IFS - Shortest wait duration  
+PIFS - Medium priority - **P**oint-**C**oordination-**F**unction IFS - Medium wait duration  
+DIFS - Asynchronous - **D**istributed-**C**oordination-**F**unction IFS - Longest wait duration  
 
-PIFS = SIFS + 1 slot time 
-DIFS = PIFS + 1 slot time = SIFS + 2 slot times  
+PIFS = SIFS + 1 slot time   
+DIFS = PIFS + 1 slot time = SIFS + 2 slot times    
 
 Devices also wait for an extra 'random backoff' time.
 
 ![](Snipaste_2020-06-17_11-30-47.png)
+
+|Type|Duration|
+|:---:|:-----|
+|RTS|RTS + SIF + CTS + SIF + Frame + ACK|
+|CTS|CTS + SIF + Frame + ACK|
+|Frame|Frame + SIF + ACK|
+|ACK|ACK|
 
 # Time Critical Services
 
@@ -129,7 +136,7 @@ MAC works on a FIFO Queue.
 
 $ BO = random(0, CW) $  
 When transmission successful - $ CW = CW_{min} $  
-When transmission unsuccessful - $ CW = min({2CW+1, CW_max}) $
+When transmission unsuccessful - $ CW = min({2\ CW\ + 1, CW_{max}}) $
 
 The higher $ CW $ is, the larger the backoff count ( $ BO $ ) can become.
 
@@ -140,13 +147,6 @@ The higher $ CW $ is, the larger the backoff count ( $ BO $ ) can become.
 To reduce power usage, instead of continually monitoring for a busy network, timers are used.
 
 Every frame has a duration ID, which indicates how long the medium will be busy for
-
-|Type|Duration|
-|:---:|:-----|
-|RTS|RTS + SIF + CTS + SIF + Frame + ACK|
-|CTS|CTS + SIF + Frame + ACK|
-|Frame|Frame + SIF + ACK|
-|ACK|ACK|
 
 # Operation
 

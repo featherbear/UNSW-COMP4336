@@ -193,7 +193,7 @@ Receivers can derive the CSI from the pilots, but the transmitter cannot derive 
 
 ## Multi-User MIMO
 
-MIMO - Uncorrelated spatial beams, separated by \lambda/4 or \lambda/2  
+MIMO - Uncorrelated spatial beams, separated by $\lambda / 4$ or $\lambda / 2$  
 
 MU-MIMO - Two single antennas users can act as one multi-antenna device. The users are unaware of this configuration
 
